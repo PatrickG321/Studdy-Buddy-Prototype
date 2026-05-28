@@ -12,6 +12,11 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Ensure all buttons inherit the page font */
+    button, input, select, textarea {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
     html, body {
       height: 100%;
     }
@@ -202,7 +207,7 @@
       border-top: 0.5px solid #B5D4F4;
       padding: 12px 16px;
       background: #ffffff;
-      margin-bottom: 60px; /* clears fixed nav */
+      margin-bottom: 66px; /* clears fixed nav (~62px) with room to spare */
     }
 
     /* ════════════════════════════════════
@@ -212,6 +217,8 @@
       background: #E6F1FB;
       align-items: center;
       padding: 76px 28px 48px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .login-brand {
@@ -2070,9 +2077,26 @@
       el.classList.remove('active');
     });
 
-    // Activate target
+    // Cancel any pending tutor reply timer on every navigation
+    if (chatTimerRef) {
+      clearTimeout(chatTimerRef);
+      chatTimerRef = null;
+    }
+
+    // Activate target and scroll its body to top
     var target = document.getElementById('pg-' + page);
-    if (target) target.classList.add('active');
+    if (target) {
+      target.classList.add('active');
+      var body = target.querySelector('.page-body');
+      if (body) body.scrollTop = 0;
+      // Always land on list view (not inside a chat) when entering tutors
+      if (page === 'tutors') {
+        var lv = document.getElementById('tutors-list-view');
+        if (lv) lv.scrollTop = 0;
+        document.getElementById('tutors-list-view').classList.remove('chat-panel-out');
+        document.getElementById('tutors-chat-view').classList.remove('chat-panel-in');
+      }
+    }
 
     // Bottom nav visibility
     var nav = document.getElementById('bottom-nav');
