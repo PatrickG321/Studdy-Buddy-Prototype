@@ -356,15 +356,15 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       </svg>
       <span class="logo-studdy">Studdy</span><span class="logo-buddy"> Buddy</span>
     </h1>
-    <span class="tb-label">My Groups</span>
+    <span class="tb-label">Groups &amp; Tutors</span>
   </div>
   <div class="page-desc-header">
-    <h2>Your Study Groups</h2>
-    <p>These are the groups you have joined. Chat with members, view meeting details, or leave a group at any time.</p>
+    <h2>Your Groups &amp; Tutors</h2>
+    <p>Your joined study groups and the tutors you have connected with — all in one place.</p>
   </div>
   <div id="mg-main" class="page-body">
-    <div class="page-title">My Groups</div>
-    <div class="page-subtitle">Study groups you have joined</div>
+    <div class="page-title">Groups &amp; Tutors</div>
+    <div class="page-subtitle">Your study groups and active tutors</div>
     <div class="mg-filter-bar">
       <button class="mg-filter-pill active" onclick="filterMyGroups('All', this)">All</button>
       <button class="mg-filter-pill" onclick="filterMyGroups('Math', this)">Math</button>
@@ -375,7 +375,11 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       <button class="mg-filter-pill" onclick="filterMyGroups('Languages', this)">Languages</button>
     </div>
     <div id="mg-list"></div>
-    <div id="mg-ad" class="sched-ad"></div>
+    <div id="mg-ad-mid" class="sched-ad" style="margin:12px 0;"></div>
+    <div class="page-title" style="margin-top:6px;margin-bottom:8px;font-size:15px;">My Tutors</div>
+    <div class="page-subtitle" style="margin-bottom:10px;">Tutors you have reached out to</div>
+    <div id="my-tutors-list"></div>
+    <div id="mg-ad" class="sched-ad" style="margin-top:12px;"></div>
   </div>
   <div id="mg-detail" class="page-body" style="display:none"><div id="mg-detail-content"></div></div>
   <div id="mg-chat" class="mg-chat-wrap" style="display:none">
@@ -707,7 +711,7 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
 <!-- ==================== BOTTOM NAV ==================== -->
 <nav id="bottom-nav">
   <button onclick="goTo('page-home')"     id="nav-home">    <span class="nav-icon">&#127968;</span><span>Home</span></button>
-  <button onclick="goTo('page-mygroups')" id="nav-mygroups"><span class="nav-icon">&#128101;</span><span>My Groups</span></button>
+  <button onclick="goTo('page-mygroups')" id="nav-mygroups"><span class="nav-icon">&#128101;</span><span style="line-height:1.1;">Groups<br>& Tutors</span></button>
   <button onclick="goTo('page-study')"    id="nav-study">   <span class="nav-icon">&#128218;</span><span>Study</span></button>
   <button onclick="goTo('page-tutors')"   id="nav-tutors">  <span class="nav-icon">&#127891;</span><span>Tutors</span></button>
   <button onclick="goTo('page-events')"   id="nav-events">  <span class="nav-icon">&#127881;</span><span>Events</span></button>
@@ -802,7 +806,13 @@ var STUDY_DATA = [
   {id:'sg3', name:'AP US History Study',        cat:'History',   location:'Library Room 3',day:'Friday',    time:'5:00 PM',  members:4, open:false, desc:'Covering key themes, primary documents, and DBQ writing strategies for the APUSH exam.',                        memberList:[{init:'ML',name:'Maya L.',grade:'Grade 11'},{init:'NW',name:'Noah W.',grade:'Grade 12'},{init:'CR',name:'Clara R.',grade:'Grade 11'},{init:'DH',name:'Dylan H.',grade:'Grade 12'}]},
   {id:'sg4', name:'Orchestra Section Practice', cat:'Arts',      location:'Music Hall',    day:'Monday',    time:'3:30 PM',  members:5, open:true,  desc:'String section rehearsal focused on upcoming concert repertoire. Bring your instrument and music.',               memberList:[{init:'TK',name:'Tyler K.',grade:'Grade 12'},{init:'SR',name:'Sam R.',grade:'Grade 11'},{init:'AL',name:'Ava L.',grade:'Grade 10'},{init:'JM',name:'James M.',grade:'Grade 11'},{init:'LN',name:'Lily N.',grade:'Grade 10'}]},
   {id:'sg5', name:'AP English Essay Prep',      cat:'English',   location:'Room 118',      day:'Thursday',  time:'6:00 PM',  members:2, open:true,  desc:'Practice close reading, thesis writing, and timed essay responses for the AP English exam.',                     memberList:[{init:'CW',name:'Chloe W.',grade:'Grade 11'},{init:'BR',name:'Ben R.',grade:'Grade 12'}]},
-  {id:'sg6', name:'Spanish Conversation Practice',cat:'Languages',location:'Room 205',     day:'Wednesday', time:'4:00 PM',  members:3, open:false, desc:'Casual conversation practice and grammar review for AP Spanish Language and Culture.',                           memberList:[{init:'JT',name:'Jordan T.',grade:'Grade 12'},{init:'MG',name:'Marco G.',grade:'Grade 11'},{init:'SK',name:'Sofia K.',grade:'Grade 11'}]}
+  {id:'sg6', name:'Spanish Conversation Practice',cat:'Languages',location:'Room 205',     day:'Wednesday', time:'4:00 PM',  members:3, open:false, desc:'Casual conversation practice and grammar review for AP Spanish Language and Culture.',                           memberList:[{init:'JT',name:'Jordan T.',grade:'Grade 12'},{init:'MG',name:'Marco G.',grade:'Grade 11'},{init:'SK',name:'Sofia K.',grade:'Grade 11'}]},
+  {id:'sg7', name:'World History Review',          cat:'History',   location:'Room 112',      day:'Tuesday',   time:'3:30 PM',  members:3, open:true,  desc:'Weekly review of world history themes, map work, and essay writing strategies. DBQ practice every other session.', memberList:[{init:'NW',name:'Noah W.',grade:'Grade 12'},{init:'CR',name:'Clara R.',grade:'Grade 11'},{init:'DS',name:'Dana S.',grade:'Grade 11'}]},
+  {id:'sg8', name:'French & Spanish Conversation', cat:'Languages', location:'Room 207',      day:'Thursday',  time:'4:00 PM',  members:4, open:true,  desc:'Multilingual conversation practice for French and Spanish students. All levels welcome — native speakers encouraged.', memberList:[{init:'JT',name:'Jordan T.',grade:'Grade 12'},{init:'MG',name:'Marco G.',grade:'Grade 11'},{init:'SK',name:'Sofia K.',grade:'Grade 11'},{init:'LP',name:'Lily P.',grade:'Grade 10'}]},
+  {id:'sg9', name:'AP Biology Study Group',        cat:'Science',   location:'Science Lab A', day:'Wednesday', time:'5:00 PM',  members:3, open:true,  desc:'Focused review of AP Biology units including genetics, ecology, and cell biology. FRQ practice every session.',       memberList:[{init:'PM',name:'Priya M.',grade:'Grade 12'},{init:'AB',name:'Alex B.',grade:'Grade 11'},{init:'KL',name:'Kim L.',grade:'Grade 11'}]},
+  {id:'sg10',name:'Creative Writing Workshop',     cat:'English',   location:'Room 118',      day:'Monday',    time:'4:30 PM',  members:4, open:true,  desc:'Share and workshop short stories, poems, and essays in a supportive environment. All styles and skill levels welcome.', memberList:[{init:'CW',name:'Chloe W.',grade:'Grade 11'},{init:'BR',name:'Ben R.',grade:'Grade 12'},{init:'EL',name:'Emma L.',grade:'Grade 10'},{init:'RT',name:'Ryan T.',grade:'Grade 11'}]},
+  {id:'sg11',name:'Government & Economics',        cat:'History',   location:'Room 203',      day:'Friday',    time:'4:00 PM',  members:2, open:true,  desc:'Study group for Government and Economics covering current events, policy analysis, and exam prep.',                    memberList:[{init:'DH',name:'Dylan H.',grade:'Grade 12'},{init:'MR',name:'Maya R.',grade:'Grade 11'}]},
+  {id:'sg12',name:'Mandarin Practice Group',       cat:'Languages', location:'Room 101',      day:'Saturday',  time:'11:00 AM', members:3, open:true,  desc:'Conversational Mandarin practice for all levels. We focus on speaking, tones, and vocabulary building each week.',      memberList:[{init:'LC',name:'Leo C.',grade:'Grade 10'},{init:'WZ',name:'Wei Z.',grade:'Grade 11'},{init:'AL',name:'Amy L.',grade:'Grade 10'}]}
 ];
 
 var studyGroupChats = {
@@ -811,7 +821,13 @@ var studyGroupChats = {
   'sg3':[{type:'other',init:'ML',sender:'Maya L.',text:'Should we focus on Period 7 this Friday?'},{type:'other',init:'NW',sender:'Noah W.',text:'Yes and DBQ practice too'},{type:'other',init:'CR',sender:'Clara R.',text:'I will print out some sample prompts'}],
   'sg4':[{type:'other',init:'TK',sender:'Tyler K.',text:'Reminder: start from measure 34 on Monday'},{type:'other',init:'AL',sender:'Ava L.',text:'Got it, the transition part is tricky'},{type:'other',init:'TK',sender:'Tyler K.',text:'We will slow it down and run it a few times'}],
   'sg5':[{type:'other',init:'CW',sender:'Chloe W.',text:'I found a good synthesis essay prompt for Thursday'},{type:'other',init:'BR',sender:'Ben R.',text:'Can you share it in advance so I can prep?'},{type:'other',init:'CW',sender:'Chloe W.',text:'Just sent it to your school email'}],
-  'sg6':[{type:'other',init:'JT',sender:'Jordan T.',text:'El tema de esta semana es hablar sobre el futuro'},{type:'other',init:'MG',sender:'Marco G.',text:'Perfecto, practicare vocabulario antes'},{type:'other',init:'SK',sender:'Sofia K.',text:'Hasta el miercoles entonces'}]
+  'sg6': [{type:'other',init:'JT',sender:'Jordan T.',text:'El tema de esta semana es hablar sobre el futuro'},{type:'other',init:'MG',sender:'Marco G.',text:'Perfecto, practicare vocabulario antes'},{type:'other',init:'SK',sender:'Sofia K.',text:'Hasta el miercoles entonces'}],
+  'sg7': [{type:'other',init:'NW',sender:'Noah W.',text:'Can we focus on the French Revolution this Tuesday?'},{type:'other',init:'CR',sender:'Clara R.',text:'Yes! I have great notes from class'},{type:'other',init:'DS',sender:'Dana S.',text:'I will bring the timeline handout too'}],
+  'sg8': [{type:'other',init:'JT',sender:'Jordan T.',text:'Pratiquons le subjonctif cette semaine'},{type:'other',init:'MG',sender:'Marco G.',text:'Buena idea, también podemos hablar del futuro'},{type:'other',init:'SK',sender:'Sofia K.',text:'See you Thursday!'}],
+  'sg9': [{type:'other',init:'PM',sender:'Priya M.',text:'Unit 4 genetics FRQ practice this Wednesday'},{type:'other',init:'AB',sender:'Alex B.',text:'Perfect, I always struggle with Mendelian genetics'},{type:'other',init:'KL',sender:'Kim L.',text:'I will bring the review sheet'}],
+  'sg10':[{type:'other',init:'CW',sender:'Chloe W.',text:'Bring a piece to workshop on Monday!'},{type:'other',init:'BR',sender:'Ben R.',text:'Working on a short story, excited to share'},{type:'other',init:'EL',sender:'Emma L.',text:'Same, I have a poem ready to go'}],
+  'sg11':[{type:'other',init:'DH',sender:'Dylan H.',text:'Should we cover monetary policy this Friday?'},{type:'other',init:'MR',sender:'Maya R.',text:'Yes and the Fed — that always shows up on the exam'}],
+  'sg12':[{type:'other',init:'LC',sender:'Leo C.',text:'我们这周练习四声调好吗'},{type:'other',init:'WZ',sender:'Wei Z.',text:'好！我来带练习材料'},{type:'other',init:'AL',sender:'Amy L.',text:'Great, see everyone Saturday!'}]
 };
 
 /* ===================== MY GROUPS DATA ===================== */
@@ -845,6 +861,8 @@ var currentStudyGroupView = null;
 var activeTutorCat   = 'All';
 var activeTutorPrice = 'All';
 var tutorSearchText  = '';
+var myTutors         = {};
+var globalAdInterval = null;
 
 var selectedDance      = 'prom';
 var eventsSearchText   = '';
@@ -1094,13 +1112,14 @@ function openTutorChat(tutorId) {
   var tutor = getTutorById(tutorId);
   if (!tutor) { return; }
   activeChatTutor = tutorId;
+  myTutors[tutorId] = true;
   document.getElementById('chat-tutor-name').textContent = tutor.name;
   if (!chatHistory[tutorId]) {
     chatHistory[tutorId] = [{from:'them', text:'Hi! I can help with ' + tutor.subj + '. What would you like to work on?'}];
   }
   renderChatMessages(tutorId);
   document.getElementById('tutor-chat-panel').className = 'chat-panel open';
-  updateTutorAd(tutor.cat);
+  refreshAllAds();
 }
 
 function closeTutorChat() {
@@ -1119,6 +1138,71 @@ function renderChatMessages(tutorId) {
   container.scrollTop = container.scrollHeight;
 }
 
+function getTutorReply(text, tutor) {
+  var lower = text.toLowerCase();
+
+  /* nevermind / backing out */
+  if (/nevermind|never mind|\bnvm\b|forget it|no thanks|not anymore|cancel|never mind|changed my mind/.test(lower)) {
+    return 'Alright, no worries! Let me know if you change your mind — I am here whenever you need help.';
+  }
+
+  /* subject keyword match → let's get started */
+  var subjKeywords = tutor.subj.toLowerCase().replace(/[,]+/g, ' ').split(/\s+/);
+  var catKeywords  = tutor.cat.toLowerCase().replace(/[\/]+/g, ' ').split(/\s+/);
+  var allKeywords  = subjKeywords.concat(catKeywords).concat(['math','calc','calculus','algebra','statistics','stats','chemistry','chem','biology','bio','physics','history','english','lit','literature','spanish','french','orchestra','music','art']);
+  for (var k = 0; k < allKeywords.length; k++) {
+    if (allKeywords[k].length > 2 && lower.indexOf(allKeywords[k]) !== -1) {
+      var starters = [
+        'Alright, let\'s get started! What part of ' + tutor.subj + ' are you working on?',
+        'Perfect! I love helping with ' + tutor.subj + '. What specifically is giving you trouble?',
+        'Great, let\'s do it! Are you working on something specific or do you want a general review?'
+      ];
+      return starters[Math.floor(Math.random() * starters.length)];
+    }
+  }
+
+  /* question asking for availability / scheduling */
+  if (/when|available|schedule|meet|session|time|day|afternoon|evening|weekend/.test(lower)) {
+    var avail = [
+      'I am usually free after 3 PM on weekdays and most of Saturday. What works for you?',
+      'Afternoons work best for me — Monday, Wednesday, or Friday. Does any of those work?',
+      'I have openings this week on Tuesday and Thursday after school. Want to pick one?'
+    ];
+    return avail[Math.floor(Math.random() * avail.length)];
+  }
+
+  /* asking about price / rate */
+  if (/price|cost|rate|how much|charge|fee/.test(lower)) {
+    return 'My rate is $' + tutor.price + '/hr. Sessions are usually an hour but we can adjust based on what you need.';
+  }
+
+  /* greeting / opener */
+  if (/^(hi|hey|hello|yo|sup|what\'s up|howdy)/.test(lower)) {
+    return 'Hey! Great to meet you. I tutor ' + tutor.subj + ' — what are you looking to work on?';
+  }
+
+  /* thank you */
+  if (/thank|thanks|thx|appreciate/.test(lower)) {
+    return 'Of course! Happy to help anytime. Let me know when you want to set up a session.';
+  }
+
+  /* very short / unclear message */
+  if (text.length < 6 || /^[^a-zA-Z]+$/.test(text)) {
+    return 'Sorry, I did not quite catch that. Could you tell me more about what you need help with?';
+  }
+
+  /* general helpful replies */
+  var general = [
+    'That makes sense — ' + tutor.subj + ' can be tricky. Want to set up a session to go over it?',
+    'Good question! I would start by breaking it into smaller steps. Want to walk through it together?',
+    'I have seen a lot of students struggle with that. Let us find a time to meet and I can help you through it.',
+    'Totally — I can help with that. When are you free this week?',
+    'Sure thing! Send me your schedule and we will find a time that works.',
+    'Absolutely. I usually suggest starting with the basics and building up from there. Sound good?'
+  ];
+  return general[Math.floor(Math.random() * general.length)];
+}
+
 function sendChatMsg() {
   var input = document.getElementById('chat-input');
   var text = input.value.trim();
@@ -1128,33 +1212,90 @@ function sendChatMsg() {
   input.value = '';
   renderChatMessages(activeChatTutor);
   var tid = activeChatTutor;
+  var tutor = getTutorById(tid);
   var container = document.getElementById('chat-messages');
   var typingEl = document.createElement('div');
   typingEl.className = 'chat-msg them';
-  typingEl.id = 'typing-indicator';
   typingEl.style.fontStyle = 'italic';
   typingEl.style.opacity = '0.6';
   typingEl.textContent = 'typing...';
   if (container) { container.appendChild(typingEl); container.scrollTop = container.scrollHeight; }
   setTimeout(function() {
-    var replies = ['Great question! Let me explain that.','Sure, I can help with that. When are you free?','Good thinking! Here is what I suggest.','Let us schedule a session to go over it.','Happy to help! That is a tricky concept.'];
-    var reply = replies[Math.floor(Math.random() * replies.length)];
+    var reply = tutor ? getTutorReply(text, tutor) : 'Sure, I can help with that!';
     if (chatHistory[tid]) { chatHistory[tid].push({from:'them', text:reply}); renderChatMessages(tid); }
   }, 1000);
 }
 
-function updateTutorAd(cat) {
-  var adEl = document.getElementById('tutors-ad');
-  if (!adEl) { return; }
-  var icon = '&#128211;'; var name = 'Five Star Notebook Set'; var price = '$12.99 at Target';
-  if (cat.indexOf('Math') !== -1)                                        { icon = '&#129518;'; name = 'Casio FX-991EX Calculator'; price = '$18.99 at Walmart'; }
-  else if (cat.indexOf('Science') !== -1)                                { icon = '&#128300;'; name = 'Lab Composition Notebook';  price = '$9.99 at Staples'; }
-  else if (cat.indexOf('History') !== -1 || cat.indexOf('English') !== -1) { icon = '&#128214;'; name = 'Oxford Pocket Dictionary';  price = '$8.99 at Barnes & Noble'; }
-  else if (cat === 'Arts')                                               { icon = '&#127925;'; name = "D'Addario Rosin";           price = '$7.99 at Guitar Center'; }
-  else if (cat === 'Languages')                                          { icon = '&#128211;'; name = 'Mead Composition Book';     price = '$4.99 at Target'; }
-  adEl.innerHTML = '<div class="sched-ad-icon">' + icon + '</div><div class="sched-ad-text"><strong>' + name + '</strong><span>' + price + '</span></div>';
-  adEl.style.display = 'flex';
+/* ===================== SHARED AD SYSTEM ===================== */
+
+var AD_PRODUCTS = {
+  'Math':     { icon:'&#129518;', name:'Casio FX-991EX Calculator',     price:'$18.99 at Walmart' },
+  'Science':  { icon:'&#128300;', name:'Lab Composition Notebook',       price:'$9.99 at Staples' },
+  'English':  { icon:'&#128214;', name:'Oxford Pocket Dictionary',       price:'$8.99 at Barnes & Noble' },
+  'History':  { icon:'&#128218;', name:'Five Subject Spiral Notebook',   price:'$6.99 at Target' },
+  'Arts':     { icon:'&#127925;', name:"D'Addario Rosin & Art Supplies", price:'$7.99 at Guitar Center' },
+  'Languages':{ icon:'&#128211;', name:'Mead Composition Book',          price:'$4.99 at Target' },
+  'default':  { icon:'&#9999;',   name:'Five Star Notebook & Pencils',   price:'$12.99 at Target' }
+};
+
+function getAdForCat(cat) {
+  if (!cat) { return AD_PRODUCTS['default']; }
+  if (cat.indexOf('Math')     !== -1) { return AD_PRODUCTS['Math']; }
+  if (cat.indexOf('Science')  !== -1) { return AD_PRODUCTS['Science']; }
+  if (cat.indexOf('English')  !== -1) { return AD_PRODUCTS['English']; }
+  if (cat.indexOf('History')  !== -1) { return AD_PRODUCTS['History']; }
+  if (cat.indexOf('Arts')     !== -1) { return AD_PRODUCTS['Arts']; }
+  if (cat.indexOf('Languages')!== -1) { return AD_PRODUCTS['Languages']; }
+  return AD_PRODUCTS['default'];
 }
+
+function renderAdEl(el, cat) {
+  if (!el) { return; }
+  var ad = getAdForCat(cat);
+  el.innerHTML = '<div class="sched-ad-icon">' + ad.icon + '</div><div class="sched-ad-text"><strong>' + ad.name + '</strong><span>' + ad.price + '</span></div>';
+  el.style.display = 'flex';
+}
+
+function getActiveSubjects() {
+  var subjects = [];
+  /* from joined/my groups */
+  for (var i = 0; i < MY_GROUPS_DATA.length; i++) {
+    if (leftGroups[MY_GROUPS_DATA[i].id]) { continue; }
+    var cats = MY_GROUPS_DATA[i].cat.split('/');
+    for (var c = 0; c < cats.length; c++) {
+      if (subjects.indexOf(cats[c]) === -1) { subjects.push(cats[c]); }
+    }
+  }
+  /* from tutors Patrick has messaged */
+  for (var tid in myTutors) {
+    var tutor = getTutorById(tid);
+    if (tutor) {
+      var tcats = tutor.cat.split('/');
+      for (var tc = 0; tc < tcats.length; tc++) {
+        if (subjects.indexOf(tcats[tc]) === -1) { subjects.push(tcats[tc]); }
+      }
+    }
+  }
+  return subjects.length > 0 ? subjects : ['default'];
+}
+
+function refreshAllAds() {
+  var subjects = getActiveSubjects();
+  var adIds = ['mg-ad', 'mg-ad-mid', 'study-ad', 'tutors-ad'];
+  if (globalAdInterval) { clearInterval(globalAdInterval); globalAdInterval = null; }
+  var idx = 0;
+  adIds.forEach(function(id) { renderAdEl(document.getElementById(id), subjects[idx]); });
+  if (subjects.length > 1) {
+    globalAdInterval = setInterval(function() {
+      idx = (idx + 1) % subjects.length;
+      adIds.forEach(function(id) { renderAdEl(document.getElementById(id), subjects[idx]); });
+    }, 3000);
+  }
+}
+
+function updateTutorAd(cat) { refreshAllAds(); }
+function updateStudyAd(cat)  { refreshAllAds(); }
+function renderMyGroupAd()   { refreshAllAds(); }
 
 /* ===================== BROWSE STUDY GROUPS ===================== */
 
@@ -1187,6 +1328,7 @@ function renderStudyGroups() {
   for (var i = 0; i < STUDY_DATA.length; i++) {
     var g = STUDY_DATA[i];
     if (!g.open) { continue; }
+    if (joinedGroups[g.id]) { continue; }
     if (activeStudyCat !== 'All' && g.cat !== activeStudyCat) { continue; }
     if (search && g.name.toLowerCase().indexOf(search) === -1) { continue; }
     count++;
@@ -1212,25 +1354,42 @@ function renderStudyGroups() {
 }
 
 function toggleJoin(id) {
-  if (joinedGroups[id]) { delete joinedGroups[id]; } else {
+  if (joinedGroups[id]) {
+    delete joinedGroups[id];
+    /* remove from MY_GROUPS_DATA if dynamically added */
+    for (var i = MY_GROUPS_DATA.length - 1; i >= 0; i--) {
+      if (MY_GROUPS_DATA[i].id === id && MY_GROUPS_DATA[i]._dynamic) {
+        MY_GROUPS_DATA.splice(i, 1); break;
+      }
+    }
+  } else {
     joinedGroups[id] = true;
     var g = getStudyGroupById(id);
-    if (g) { updateStudyAd(g.cat); }
+    if (g) {
+      updateStudyAd(g.cat);
+      /* add to MY_GROUPS_DATA if not already there */
+      var alreadyIn = false;
+      for (var j = 0; j < MY_GROUPS_DATA.length; j++) {
+        if (MY_GROUPS_DATA[j].id === id) { alreadyIn = true; break; }
+      }
+      if (!alreadyIn) {
+        MY_GROUPS_DATA.push({
+          id: g.id, name: g.name, cat: g.cat,
+          location: g.location, meeting: g.day + ' ' + g.time,
+          open: g.open, _dynamic: true,
+          memberList: [{init:'PD', name:'Patrick (You)', grade:'Grade 11'}].concat(g.memberList)
+        });
+        if (!myGroupChats[id] && studyGroupChats[id]) {
+          myGroupChats[id] = studyGroupChats[id].slice();
+        }
+      }
+    }
   }
   renderStudyGroups();
 }
 
 function updateStudyAd(cat) {
-  var adEl = document.getElementById('study-ad');
-  if (!adEl) { return; }
-  var icon = '&#128211;'; var name = 'Five Star Notebook Set'; var price = '$12.99 at Target';
-  if (cat === 'Math')                              { icon = '&#129518;'; name = 'Casio FX-991EX Calculator'; price = '$18.99 at Walmart'; }
-  else if (cat === 'Science')                      { icon = '&#128300;'; name = 'Lab Composition Notebook';  price = '$9.99 at Staples'; }
-  else if (cat === 'History' || cat === 'English') { icon = '&#128214;'; name = 'Oxford Pocket Dictionary';  price = '$8.99 at Barnes & Noble'; }
-  else if (cat === 'Arts')                         { icon = '&#127925;'; name = "D'Addario Rosin";           price = '$7.99 at Guitar Center'; }
-  else if (cat === 'Languages')                    { icon = '&#128211;'; name = 'Mead Composition Book';     price = '$4.99 at Target'; }
-  adEl.innerHTML = '<div class="sched-ad-icon">' + icon + '</div><div class="sched-ad-text"><strong>' + name + '</strong><span>' + price + '</span></div>';
-  adEl.style.display = 'flex';
+  renderAdEl(document.getElementById('study-ad'), cat);
 }
 
 function getStudyGroupById(id) {
@@ -1298,6 +1457,44 @@ function renderStudyMessages(id) {
   container.scrollTop = container.scrollHeight;
 }
 
+function getGroupReply(text, memberList, cat) {
+  var lower = text.toLowerCase();
+  var responder = memberList && memberList.length > 1 ? memberList[1 % memberList.length] : {init:'SR', name:'Sam R.'};
+  /* pick someone other than Patrick */
+  for (var i = 0; i < memberList.length; i++) {
+    if (memberList[i].init !== 'PD') { responder = memberList[i]; break; }
+  }
+
+  var reply = '';
+  if (/nevermind|never mind|\bnvm\b|forget it|cancel/.test(lower)) {
+    reply = 'No worries! Let us know if you need anything.';
+  } else if (/when|time|meet|schedule|day|saturday|sunday|monday|tuesday|wednesday|thursday|friday/.test(lower)) {
+    reply = 'I will be there! Same time as usual works for me.';
+  } else if (/notes|bring|have|got|print/.test(lower)) {
+    reply = 'I have got mine ready — see everyone then!';
+  } else if (/help|struggle|hard|difficult|confused|understand/.test(lower)) {
+    reply = 'Same, that section is tough. Let us go over it together at the next session.';
+  } else if (/good|great|awesome|perfect|sounds good|yes|yeah|yep/.test(lower)) {
+    var agrees = ['Agreed!', 'Sounds good to me!', 'Perfect, see you then!', 'Yes! Let us do it.'];
+    reply = agrees[Math.floor(Math.random() * agrees.length)];
+  } else if (/test|exam|quiz|ap|final/.test(lower)) {
+    reply = 'I know, I am a little nervous too. Let us make sure we are all prepared.';
+  } else if (text.length < 5) {
+    reply = 'Can you say more? Want to make sure everyone is on the same page.';
+  } else {
+    var generic = [
+      'Good point! Let us add that to the agenda for next time.',
+      'Totally agree. See everyone soon!',
+      'Thanks for the heads up — I will come prepared.',
+      'That works for me! Looking forward to it.',
+      'I was just thinking the same thing.',
+      'Let us make sure we cover that — adding it to my notes now.'
+    ];
+    reply = generic[Math.floor(Math.random() * generic.length)];
+  }
+  return {type:'other', init:responder.init, sender:responder.name.split(' ')[0] + ' ' + (responder.name.split(' ')[1]||''), text:reply};
+}
+
 function sendStudyMsg() {
   var input = document.getElementById('study-chat-input');
   var text = input.value.trim();
@@ -1306,6 +1503,12 @@ function sendStudyMsg() {
   studyGroupChats[currentStudyGroupView].push({type:'me', init:'PD', sender:'Patrick', text:text});
   input.value = '';
   renderStudyMessages(currentStudyGroupView);
+  var gid = currentStudyGroupView;
+  var g = getStudyGroupById(gid);
+  setTimeout(function() {
+    var reply = getGroupReply(text, g ? g.memberList : [], g ? g.cat : '');
+    if (studyGroupChats[gid]) { studyGroupChats[gid].push(reply); renderStudyMessages(gid); }
+  }, 1000);
 }
 
 function openCreateGroup() { document.getElementById('create-group-modal').className = 'modal-overlay open'; }
@@ -1329,12 +1532,42 @@ function createGroup() {
 
 /* ===================== MY GROUPS ===================== */
 
+function renderMyTutors() {
+  var el = document.getElementById('my-tutors-list');
+  if (!el) { return; }
+  var html = ''; var count = 0;
+  for (var tid in myTutors) {
+    var t = getTutorById(tid);
+    if (!t) { continue; }
+    count++;
+    var stars = '';
+    for (var s = 0; s < 5; s++) {
+      stars += s < t.stars ? '<span style="color:#378ADD;">&#9733;</span>' : '<span style="color:#D1E4F5;">&#9733;</span>';
+    }
+    html += '<div class="tutor-card" style="margin-bottom:8px;">';
+    html += '<div class="tutor-card-top">';
+    html += '<div class="tutor-avatar">' + t.init + '</div>';
+    html += '<div class="tutor-info"><div class="tutor-name">' + t.name + '</div>';
+    html += '<div class="tutor-subj">' + t.subj + '</div>';
+    html += '<div style="margin-top:4px;">' + stars + '</div></div>';
+    html += '<div class="tutor-right"><div class="tutor-price">$' + t.price + '/hr</div><span class="badge-available">Active</span></div>';
+    html += '</div>';
+    html += '<button class="btn-interested" onclick="openTutorChat(\'' + t.id + '\')">Message</button>';
+    html += '</div>';
+  }
+  if (count === 0) {
+    html = '<div class="empty-msg">No tutors yet — go to the Tutors page and click "I\'m interested" to connect with one.</div>';
+  }
+  el.innerHTML = html;
+}
+
 function initMyGroups() {
   document.getElementById('mg-main').style.display   = 'block';
   document.getElementById('mg-detail').style.display = 'none';
   document.getElementById('mg-chat').style.display   = 'none';
   renderMyGroups();
-  renderMyGroupAd();
+  renderMyTutors();
+  refreshAllAds();
 }
 
 function backToMyGroups() {
@@ -1342,7 +1575,8 @@ function backToMyGroups() {
   document.getElementById('mg-detail').style.display = 'none';
   document.getElementById('mg-chat').style.display   = 'none';
   renderMyGroups();
-  renderMyGroupAd();
+  renderMyTutors();
+  refreshAllAds();
 }
 
 function filterMyGroups(cat, btn) {
@@ -1377,7 +1611,20 @@ function getMyGroupById(id) {
 
 function leaveGroup(id) {
   if (window.confirm('Are you sure you want to leave this group?')) {
-    leftGroups[id] = true; renderMyGroups(); renderMyGroupAd();
+    var isDynamic = false;
+    for (var i = 0; i < MY_GROUPS_DATA.length; i++) {
+      if (MY_GROUPS_DATA[i].id === id && MY_GROUPS_DATA[i]._dynamic) { isDynamic = true; break; }
+    }
+    if (isDynamic) {
+      delete joinedGroups[id];
+      for (var j = MY_GROUPS_DATA.length - 1; j >= 0; j--) {
+        if (MY_GROUPS_DATA[j].id === id) { MY_GROUPS_DATA.splice(j, 1); break; }
+      }
+    } else {
+      leftGroups[id] = true;
+    }
+    renderMyGroups();
+    renderMyGroupAd();
   }
 }
 
@@ -1440,26 +1687,41 @@ function sendGroupMsg() {
   myGroupChats[currentGroupView].push({type:'me', init:'PD', sender:'Patrick', text:text});
   input.value = '';
   renderGroupMessages(currentGroupView);
+  var gid = currentGroupView;
+  var g = getMyGroupById(gid);
+  setTimeout(function() {
+    var reply = getGroupReply(text, g ? g.memberList : [], g ? g.cat : '');
+    if (myGroupChats[gid]) { myGroupChats[gid].push(reply); renderGroupMessages(gid); }
+  }, 1000);
 }
 
 function renderMyGroupAd() {
   var adEl = document.getElementById('mg-ad');
   if (!adEl) { return; }
-  var hasMath = false; var hasScience = false; var hasArts = false; var hasHistEng = false;
+
+  /* collect unique subjects from active groups */
+  var subjects = [];
   for (var i = 0; i < MY_GROUPS_DATA.length; i++) {
     if (leftGroups[MY_GROUPS_DATA[i].id]) { continue; }
     var cat = MY_GROUPS_DATA[i].cat;
-    if (cat === 'Math')    { hasMath    = true; }
-    if (cat === 'Science') { hasScience = true; }
-    if (cat === 'Arts')    { hasArts    = true; }
-    if (cat === 'History' || cat === 'English') { hasHistEng = true; }
+    if (subjects.indexOf(cat) === -1) { subjects.push(cat); }
   }
-  var icon = '&#128211;'; var name = 'Five Star Notebook Set'; var price = '$12.99 at Target';
-  if (hasMath)          { icon = '&#129518;'; name = 'Casio FX-991EX Calculator'; price = '$18.99 at Walmart'; }
-  else if (hasScience)  { icon = '&#128300;'; name = 'Lab Composition Notebook';  price = '$9.99 at Staples'; }
-  else if (hasArts)     { icon = '&#127925;'; name = "D'Addario Rosin";           price = '$7.99 at Guitar Center'; }
-  else if (hasHistEng)  { icon = '&#128214;'; name = 'Oxford Pocket Dictionary';  price = '$8.99 at Target'; }
-  adEl.innerHTML = '<div class="sched-ad-icon">' + icon + '</div><div class="sched-ad-text"><strong>' + name + '</strong><span>' + price + '</span></div>';
+  if (subjects.length === 0) { subjects = ['default']; }
+
+  /* clear any existing rotation */
+  if (myGroupAdInterval) { clearInterval(myGroupAdInterval); myGroupAdInterval = null; }
+
+  /* show first ad immediately */
+  var idx = 0;
+  renderAdEl(adEl, subjects[idx]);
+
+  /* rotate every 3 seconds if multiple subjects */
+  if (subjects.length > 1) {
+    myGroupAdInterval = setInterval(function() {
+      idx = (idx + 1) % subjects.length;
+      renderAdEl(adEl, subjects[idx]);
+    }, 3000);
+  }
 }
 
 /* ===================== CREATE STUDY GROUP ===================== */
