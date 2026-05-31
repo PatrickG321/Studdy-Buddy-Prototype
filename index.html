@@ -27,6 +27,11 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
 .top-bar .tb-label  { color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500; }
 .top-bar .tb-avatar { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.2); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
 
+/* ===== PAGE DESCRIPTION HEADER ===== */
+.page-desc-header { background: #E6F1FB; padding: 14px 16px; }
+.page-desc-header h2 { font-size: 15px; font-weight: 700; color: #1A3A5C; margin-bottom: 3px; }
+.page-desc-header p  { font-size: 13px; color: #6B7280; line-height: 1.45; margin: 0; }
+
 /* ===== PAGE BODY ===== */
 .page-body { padding: 14px 16px; padding-bottom: 96px; }
 .page-title    { font-size: 17px; font-weight: 700; color: #1A3A5C; margin-bottom: 2px; }
@@ -106,7 +111,7 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
 .member-name  { font-size: 13px; font-weight: 600; color: #1A3A5C; }
 .member-grade { font-size: 12px; color: #6B7280; }
 
-.mg-chat-wrap       { flex-direction: column; height: calc(100vh - 46px); overflow: hidden; }
+.mg-chat-wrap       { flex-direction: column; height: calc(100vh - 162px); overflow: hidden; }
 .mg-chat-back-bar   { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid #E6F1FB; background: #FFFFFF; flex-shrink: 0; }
 .mg-chat-group-name { font-size: 14px; font-weight: 600; color: #1A3A5C; }
 .mg-chat-messages   { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
@@ -168,6 +173,10 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
 .chat-input-row  { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid #E6F1FB; flex-shrink: 0; }
 .chat-input      { flex: 1; padding: 8px 12px; border: 1px solid #B5D4F4; border-radius: 6px; font-size: 13px; outline: none; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
 .chat-send       { background: #378ADD; color: #FFFFFF; border: none; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+
+/* ===== FORM PAGES ===== */
+.bat-check { display: flex; align-items: center; gap: 7px; font-size: 13px; color: #1A3A5C; font-weight: 400; cursor: pointer; }
+.bat-check input[type="checkbox"] { width: 15px; height: 15px; accent-color: #378ADD; cursor: pointer; flex-shrink: 0; }
 
 /* ===== MODAL ===== */
 .modal-overlay      { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26,58,92,0.45); z-index: 200; align-items: center; justify-content: center; }
@@ -295,6 +304,10 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
     </h1>
     <div class="tb-avatar">PD</div>
   </div>
+  <div class="page-desc-header">
+    <h2>Welcome back, Patrick</h2>
+    <p>Here is a quick look at your study groups, upcoming sessions, and recent activity.</p>
+  </div>
   <div class="page-body">
     <div class="greeting">Good morning, Patrick! &#128075;</div>
     <div class="greeting-sub">Here's your school day at a glance</div>
@@ -314,7 +327,7 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
     </div>
     <div class="home-card" onclick="goTo('page-tutors')">
       <div class="home-card-icon">&#127891;</div>
-      <div class="home-card-text"><h3>Find a Tutor</h3><p>From $12/hr &middot; 6 tutors available</p></div>
+      <div class="home-card-text"><h3>Find a Tutor</h3><p>From $12/hr &middot; 5 tutors available</p></div>
     </div>
     <div class="home-card" onclick="goTo('page-events')">
       <div class="home-card-icon">&#127881;</div>
@@ -326,13 +339,6 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       <div>
         <div style="font-size:13px;font-weight:600;color:#1B5E20;">Olivia R. &middot; Prom match</div>
         <div style="font-size:11px;color:#388E3C;margin-top:1px;">You can ask her!</div>
-      </div>
-    </div>
-    <div style="background:#E6F1FB;border:1px solid #B5D4F4;border-radius:8px;padding:11px 14px;margin-bottom:7px;display:flex;align-items:center;gap:10px;cursor:pointer;" onclick="goTo('page-events')">
-      <span style="font-size:18px;">&#128172;</span>
-      <div>
-        <div style="font-size:13px;font-weight:600;color:#1A3A5C;">Emma S. &middot; Sadie Hawkins match</div>
-        <div style="font-size:11px;color:#6B7280;margin-top:1px;">She'll be notified to ask you</div>
       </div>
     </div>
   </div>
@@ -351,6 +357,10 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       <span class="logo-studdy">Studdy</span><span class="logo-buddy"> Buddy</span>
     </h1>
     <span class="tb-label">My Groups</span>
+  </div>
+  <div class="page-desc-header">
+    <h2>Your Study Groups</h2>
+    <p>These are the groups you have joined. Chat with members, view meeting details, or leave a group at any time.</p>
   </div>
   <div id="mg-main" class="page-body">
     <div class="page-title">My Groups</div>
@@ -395,6 +405,10 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
     </h1>
     <span class="tb-label">Study Groups</span>
   </div>
+  <div class="page-desc-header">
+    <h2>Find a Study Group</h2>
+    <p>Browse open study groups and join one that fits your schedule. Groups shown are actively accepting new members.</p>
+  </div>
   <div id="study-main" class="page-body">
     <div class="page-title">Browse Study Groups</div>
     <div class="page-subtitle">Find and join a study squad</div>
@@ -410,8 +424,9 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       <button class="study-filter-pill" onclick="setStudyCat('Arts', this)">Arts</button>
       <button class="study-filter-pill" onclick="setStudyCat('Languages', this)">Languages</button>
     </div>
-    <button class="btn-new" onclick="openCreateGroup()">+ Create New Group</button>
     <div id="study-groups-list"></div>
+    <div id="study-ad" class="sched-ad" style="display:none;margin-bottom:10px;"></div>
+    <button class="btn-new" style="margin-top:0;" onclick="goTo('page-create-group')">+ Create a Study Group</button>
   </div>
   <div id="study-detail" class="page-body" style="display:none"><div id="study-detail-content"></div></div>
   <div id="study-chat" class="mg-chat-wrap" style="display:none">
@@ -441,6 +456,10 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
     </h1>
     <span class="tb-label">Tutors</span>
   </div>
+  <div class="page-desc-header">
+    <h2>Find a Tutor</h2>
+    <p>Browse available peer tutors, filter by subject or price, and reach out to set up a session.</p>
+  </div>
   <div class="page-body">
     <div class="page-title">Find a Tutor</div>
     <div class="page-subtitle">Connect with peer tutors at your school</div>
@@ -463,7 +482,8 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       <button class="tutor-price-pill" onclick="setTutorPrice('over25', this)">Over $25/hr</button>
     </div>
     <div id="tutors-list"></div>
-    <div id="tutors-ad" class="sched-ad" style="display:none"></div>
+    <button class="btn-new" style="margin-top:8px;" onclick="goTo('page-become-tutor')">Become a Tutor</button>
+    <div id="tutors-ad" class="sched-ad" style="display:none;margin-top:10px;"></div>
   </div>
 </div>
 
@@ -481,16 +501,17 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
     </h1>
     <span class="tb-label">Events</span>
   </div>
+  <div class="page-desc-header">
+    <h2>Dance Match List</h2>
+    <p>Add people you would go to a dance with. If you both add each other for the same dance, you will be notified based on who is supposed to ask.</p>
+  </div>
   <div class="page-body">
     <div class="page-title">Events &amp; Dances</div>
     <div class="page-subtitle">Build your private list for each dance</div>
 
     <!-- MATCH NOTIFICATION BANNERS (hardcoded) -->
     <div class="match-banner-active">
-      &#127881; <strong>You matched with Olivia R. for Prom!</strong> You can ask her &mdash; she is waiting to hear from you.
-    </div>
-    <div class="match-banner-passive">
-      &#128140; <strong>You matched with Emma S. for Sadie Hawkins.</strong> Since Sadie Hawkins is a girl-asks dance, she will be notified to ask you.
+      &#127881; <strong>You matched with Olivia R. for Prom!</strong> You can ask her!
     </div>
 
     <!-- UPCOMING DANCES GRID -->
@@ -551,6 +572,134 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #F0F7FF;
       </div>
 
       <div id="events-student-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CREATE STUDY GROUP ==================== -->
+<div id="page-create-group" class="page" style="display:none">
+  <div class="top-bar" style="justify-content:flex-start;gap:12px;">
+    <button onclick="goTo('page-study')" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;padding:0;">&#8592;</button>
+    <span style="font-size:16px;font-weight:600;color:#fff;">Create a Study Group</span>
+  </div>
+  <div id="csg-form-wrap">
+    <div class="page-desc-header">
+      <h2>Set Up Your Group</h2>
+      <p>Set up your group and start studying together.</p>
+    </div>
+    <div class="page-body">
+      <div class="form-group"><label>Group Name</label><input type="text" id="csg-name" placeholder="e.g. AP Calc Saturday Review"></div>
+      <div class="form-group">
+        <label>Subject</label>
+        <select id="csg-subject">
+          <optgroup label="Math"><option>Algebra 1</option><option>Algebra 2</option><option>Geometry</option><option>Pre-Calculus</option><option>AP Calculus BC</option><option>Statistics</option></optgroup>
+          <optgroup label="Science"><option>Biology</option><option>Chemistry</option><option>Physics</option><option>AP Biology</option><option>AP Chemistry</option><option>Environmental Science</option></optgroup>
+          <optgroup label="English"><option>English 9</option><option>English 10</option><option>English 11</option><option>English 12</option><option>AP English Lit</option><option>Creative Writing</option></optgroup>
+          <optgroup label="History"><option>World History</option><option>US History</option><option>AP US History</option><option>Government</option><option>Economics</option></optgroup>
+          <optgroup label="Arts"><option>Orchestra</option><option>Band</option><option>Choir</option><option>Art 1</option><option>Photography</option><option>Drama</option></optgroup>
+          <optgroup label="Languages"><option>Spanish 1</option><option>Spanish 2</option><option>French 1</option><option>Mandarin 1</option></optgroup>
+        </select>
+      </div>
+      <div class="form-group"><label>Meeting Location</label><input type="text" id="csg-location" placeholder="e.g. Room 204, Library Room 3, Music Hall"></div>
+      <div class="form-group">
+        <label>Meeting Day</label>
+        <select id="csg-day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+      </div>
+      <div class="form-group"><label>Meeting Time</label><input type="time" id="csg-time"></div>
+      <div class="form-group">
+        <label>Open to new members?</label>
+        <div style="display:flex;gap:20px;margin-top:6px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;color:#1A3A5C;"><input type="radio" name="csg-open" value="yes" checked> Yes</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;color:#1A3A5C;"><input type="radio" name="csg-open" value="no"> No</label>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="submitCreateGroup()">Create Group</button>
+    </div>
+  </div>
+  <div id="csg-success-wrap" style="display:none">
+    <div class="page-body" style="text-align:center;padding-top:48px;">
+      <div style="font-size:48px;margin-bottom:16px;">&#127881;</div>
+      <div style="font-size:16px;font-weight:700;color:#1A3A5C;margin-bottom:8px;">Group Created!</div>
+      <div style="font-size:13px;color:#6B7280;margin-bottom:28px;line-height:1.55;">Your group has been created! It will appear in the Study Groups page.</div>
+      <button class="btn-primary" onclick="goTo('page-study')">Back to Study Groups</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BECOME A TUTOR ==================== -->
+<div id="page-become-tutor" class="page" style="display:none">
+  <div class="top-bar" style="justify-content:flex-start;gap:12px;">
+    <button onclick="goTo('page-tutors')" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;padding:0;">&#8592;</button>
+    <span style="font-size:16px;font-weight:600;color:#fff;">Become a Tutor</span>
+  </div>
+  <div id="bat-form-wrap">
+    <div class="page-desc-header">
+      <h2>Become a Tutor</h2>
+      <p>Share your knowledge and earn money helping other students.</p>
+    </div>
+    <div class="page-body">
+      <div style="background:#E6F1FB;border-radius:8px;padding:12px 14px;margin-bottom:16px;">
+        <div style="font-size:13px;color:#1A3A5C;line-height:1.55;">&#128176; <strong>Studdy Buddy takes 8% of your tutoring fees</strong> to keep the platform running. You keep <strong>92%</strong> of what you earn.</div>
+      </div>
+      <div class="form-group"><label>Your Name</label><input type="text" id="bat-name" value="Patrick"></div>
+      <div class="form-group">
+        <label>Grade</label>
+        <select id="bat-grade"><option>9th</option><option>10th</option><option selected>11th</option><option>12th</option></select>
+      </div>
+      <div class="form-group">
+        <label>Subjects You Can Tutor</label>
+        <div style="margin-top:6px;border:1px solid #B5D4F4;border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;background:#fff;">
+          <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;">Math</div>
+          <label class="bat-check"><input type="checkbox"> Algebra 1</label><label class="bat-check"><input type="checkbox"> Algebra 2</label><label class="bat-check"><input type="checkbox"> Geometry</label><label class="bat-check"><input type="checkbox"> Pre-Calculus</label><label class="bat-check"><input type="checkbox"> AP Calculus BC</label><label class="bat-check"><input type="checkbox"> Statistics</label>
+          <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">Science</div>
+          <label class="bat-check"><input type="checkbox"> Biology</label><label class="bat-check"><input type="checkbox"> Chemistry</label><label class="bat-check"><input type="checkbox"> Physics</label><label class="bat-check"><input type="checkbox"> AP Biology</label><label class="bat-check"><input type="checkbox"> AP Chemistry</label><label class="bat-check"><input type="checkbox"> Environmental Science</label>
+          <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">English</div>
+          <label class="bat-check"><input type="checkbox"> English 9</label><label class="bat-check"><input type="checkbox"> English 10</label><label class="bat-check"><input type="checkbox"> English 11</label><label class="bat-check"><input type="checkbox"> English 12</label><label class="bat-check"><input type="checkbox"> AP English Lit</label><label class="bat-check"><input type="checkbox"> Creative Writing</label>
+          <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">History</div>
+          <label class="bat-check"><input type="checkbox"> World History</label><label class="bat-check"><input type="checkbox"> US History</label><label class="bat-check"><input type="checkbox"> AP US History</label><label class="bat-check"><input type="checkbox"> Government</label><label class="bat-check"><input type="checkbox"> Economics</label>
+          <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">Arts</div>
+          <label class="bat-check"><input type="checkbox"> Orchestra</label><label class="bat-check"><input type="checkbox"> Band</label><label class="bat-check"><input type="checkbox"> Choir</label><label class="bat-check"><input type="checkbox"> Art 1</label><label class="bat-check"><input type="checkbox"> Photography</label><label class="bat-check"><input type="checkbox"> Drama</label>
+          <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;">Languages</div>
+          <label class="bat-check"><input type="checkbox"> Spanish 1</label><label class="bat-check"><input type="checkbox"> Spanish 2</label><label class="bat-check"><input type="checkbox"> French 1</label><label class="bat-check"><input type="checkbox"> Mandarin 1</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Hourly Rate</label>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:15px;color:#1A3A5C;font-weight:600;">$</span>
+          <input type="number" id="bat-rate" min="1" max="100" placeholder="e.g. 15" oninput="updateEarningsPreview()" style="width:100px;">
+        </div>
+        <div id="bat-earnings-preview" style="margin-top:8px;font-size:12px;color:#378ADD;font-weight:600;min-height:18px;"></div>
+      </div>
+      <div class="form-group">
+        <label>Availability</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+          <label class="bat-check"><input type="checkbox"> Mon</label>
+          <label class="bat-check"><input type="checkbox"> Tue</label>
+          <label class="bat-check"><input type="checkbox"> Wed</label>
+          <label class="bat-check"><input type="checkbox"> Thu</label>
+          <label class="bat-check"><input type="checkbox"> Fri</label>
+          <label class="bat-check"><input type="checkbox"> Sat</label>
+          <label class="bat-check"><input type="checkbox"> Sun</label>
+        </div>
+      </div>
+      <div class="form-group"><label>Short Bio</label><textarea id="bat-bio" rows="4" placeholder="Tell students a little about yourself and your experience..." style="width:100%;padding:10px 12px;border:1px solid #B5D4F4;border-radius:6px;font-size:13px;color:#1A3A5C;font-family:'Inter','Segoe UI',Arial,sans-serif;resize:vertical;outline:none;"></textarea></div>
+      <div class="form-group">
+        <label>Currently accepting students?</label>
+        <div style="display:flex;gap:20px;margin-top:6px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;color:#1A3A5C;"><input type="radio" name="bat-accepting" value="yes" checked> Yes</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;color:#1A3A5C;"><input type="radio" name="bat-accepting" value="no"> No</label>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="submitBecomeTutor()">Submit Application</button>
+    </div>
+  </div>
+  <div id="bat-success-wrap" style="display:none">
+    <div class="page-body" style="text-align:center;padding-top:48px;">
+      <div style="font-size:48px;margin-bottom:16px;">&#127891;</div>
+      <div style="font-size:16px;font-weight:700;color:#1A3A5C;margin-bottom:8px;">Application Submitted!</div>
+      <div style="font-size:13px;color:#6B7280;margin-bottom:28px;line-height:1.55;">Your tutor profile has been submitted for review! You will appear in the tutors list once approved.</div>
+      <button class="btn-primary" onclick="goTo('page-tutors')">Back to Tutors</button>
     </div>
   </div>
 </div>
@@ -710,7 +859,18 @@ function goTo(id) {
   document.getElementById(id).style.display = 'block';
 
   var nav = document.getElementById('bottom-nav');
-  nav.style.display = (id === 'page-login' || id === 'page-signup') ? 'none' : 'flex';
+  var noNav = ['page-login', 'page-signup', 'page-create-group', 'page-become-tutor'];
+  nav.style.display = (noNav.indexOf(id) !== -1) ? 'none' : 'flex';
+
+  if (id === 'page-create-group') {
+    document.getElementById('csg-form-wrap').style.display = 'block';
+    document.getElementById('csg-success-wrap').style.display = 'none';
+  }
+  if (id === 'page-become-tutor') {
+    document.getElementById('bat-form-wrap').style.display = 'block';
+    document.getElementById('bat-success-wrap').style.display = 'none';
+    document.getElementById('bat-earnings-preview').textContent = '';
+  }
 
   var navMap = {'page-home':'nav-home','page-mygroups':'nav-mygroups','page-study':'nav-study','page-tutors':'nav-tutors','page-events':'nav-events'};
   var navIds = ['nav-home','nav-mygroups','nav-study','nav-tutors','nav-events'];
@@ -891,6 +1051,7 @@ function renderTutorCards() {
 
   for (var i = 0; i < TUTORS_DATA.length; i++) {
     var t = TUTORS_DATA[i];
+    if (!t.available) { continue; }
     if (activeTutorCat !== 'All' && t.cat.indexOf(activeTutorCat) === -1) { continue; }
     if (search && t.name.toLowerCase().indexOf(search) === -1 && t.subj.toLowerCase().indexOf(search) === -1) { continue; }
     if (activeTutorPrice === 'under15' && t.price >= 15) { continue; }
@@ -967,6 +1128,14 @@ function sendChatMsg() {
   input.value = '';
   renderChatMessages(activeChatTutor);
   var tid = activeChatTutor;
+  var container = document.getElementById('chat-messages');
+  var typingEl = document.createElement('div');
+  typingEl.className = 'chat-msg them';
+  typingEl.id = 'typing-indicator';
+  typingEl.style.fontStyle = 'italic';
+  typingEl.style.opacity = '0.6';
+  typingEl.textContent = 'typing...';
+  if (container) { container.appendChild(typingEl); container.scrollTop = container.scrollHeight; }
   setTimeout(function() {
     var replies = ['Great question! Let me explain that.','Sure, I can help with that. When are you free?','Good thinking! Here is what I suggest.','Let us schedule a session to go over it.','Happy to help! That is a tricky concept.'];
     var reply = replies[Math.floor(Math.random() * replies.length)];
@@ -1017,6 +1186,7 @@ function renderStudyGroups() {
   var html = ''; var count = 0;
   for (var i = 0; i < STUDY_DATA.length; i++) {
     var g = STUDY_DATA[i];
+    if (!g.open) { continue; }
     if (activeStudyCat !== 'All' && g.cat !== activeStudyCat) { continue; }
     if (search && g.name.toLowerCase().indexOf(search) === -1) { continue; }
     count++;
@@ -1042,8 +1212,25 @@ function renderStudyGroups() {
 }
 
 function toggleJoin(id) {
-  if (joinedGroups[id]) { delete joinedGroups[id]; } else { joinedGroups[id] = true; }
+  if (joinedGroups[id]) { delete joinedGroups[id]; } else {
+    joinedGroups[id] = true;
+    var g = getStudyGroupById(id);
+    if (g) { updateStudyAd(g.cat); }
+  }
   renderStudyGroups();
+}
+
+function updateStudyAd(cat) {
+  var adEl = document.getElementById('study-ad');
+  if (!adEl) { return; }
+  var icon = '&#128211;'; var name = 'Five Star Notebook Set'; var price = '$12.99 at Target';
+  if (cat === 'Math')                              { icon = '&#129518;'; name = 'Casio FX-991EX Calculator'; price = '$18.99 at Walmart'; }
+  else if (cat === 'Science')                      { icon = '&#128300;'; name = 'Lab Composition Notebook';  price = '$9.99 at Staples'; }
+  else if (cat === 'History' || cat === 'English') { icon = '&#128214;'; name = 'Oxford Pocket Dictionary';  price = '$8.99 at Barnes & Noble'; }
+  else if (cat === 'Arts')                         { icon = '&#127925;'; name = "D'Addario Rosin";           price = '$7.99 at Guitar Center'; }
+  else if (cat === 'Languages')                    { icon = '&#128211;'; name = 'Mead Composition Book';     price = '$4.99 at Target'; }
+  adEl.innerHTML = '<div class="sched-ad-icon">' + icon + '</div><div class="sched-ad-text"><strong>' + name + '</strong><span>' + price + '</span></div>';
+  adEl.style.display = 'flex';
 }
 
 function getStudyGroupById(id) {
@@ -1055,6 +1242,7 @@ function viewStudyGroup(id) {
   var g = getStudyGroupById(id);
   if (!g) { return; }
   currentStudyGroupView = id;
+  updateStudyAd(g.cat);
   var statusBadge = g.open ? '<span class="badge-open">Open</span>' : '<span class="badge-closed">Closed</span>';
   var html = '';
   html += '<button class="mg-back-btn" onclick="backToStudyGroups()">&#8592; Back to Study Groups</button>';
@@ -1082,6 +1270,7 @@ function chatStudyGroup(id) {
   var g = getStudyGroupById(id);
   if (!g) { return; }
   currentStudyGroupView = id;
+  updateStudyAd(g.cat);
   document.getElementById('study-chat-title').textContent = g.name;
   renderStudyMessages(id);
   document.getElementById('study-main').style.display   = 'none';
@@ -1271,6 +1460,29 @@ function renderMyGroupAd() {
   else if (hasArts)     { icon = '&#127925;'; name = "D'Addario Rosin";           price = '$7.99 at Guitar Center'; }
   else if (hasHistEng)  { icon = '&#128214;'; name = 'Oxford Pocket Dictionary';  price = '$8.99 at Target'; }
   adEl.innerHTML = '<div class="sched-ad-icon">' + icon + '</div><div class="sched-ad-text"><strong>' + name + '</strong><span>' + price + '</span></div>';
+}
+
+/* ===================== CREATE STUDY GROUP ===================== */
+
+function submitCreateGroup() {
+  document.getElementById('csg-form-wrap').style.display = 'none';
+  document.getElementById('csg-success-wrap').style.display = 'block';
+}
+
+/* ===================== BECOME A TUTOR ===================== */
+
+function updateEarningsPreview() {
+  var rate = parseFloat(document.getElementById('bat-rate').value);
+  var el = document.getElementById('bat-earnings-preview');
+  if (!el) { return; }
+  if (!rate || rate <= 0) { el.textContent = ''; return; }
+  var keep = (rate * 0.92).toFixed(2);
+  el.textContent = 'At $' + rate + '/hr you keep $' + keep + '/hr after the 8% platform fee';
+}
+
+function submitBecomeTutor() {
+  document.getElementById('bat-form-wrap').style.display = 'none';
+  document.getElementById('bat-success-wrap').style.display = 'block';
 }
 
 /* ===================== INIT ===================== */
